@@ -46,12 +46,6 @@ typedef struct
         ^
 3 warnings generated.
 compiling Delay.c...
-Dio.c(1): warning: In file included from...
-../I2C/Dio.h(107): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
-1 warning generated.
-compiling Dio.c...
 main.c(3): warning: In file included from...
 ../I2C/Dio.h(107): warning: no newline at end of file [-Wnewline-eof]
 #endif
@@ -60,29 +54,41 @@ main.c(4): warning: In file included from...
 ../I2C/Delay.h(15): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-main.c(6): warning: no previous extern declaration for non-static variable 'dataSend' [-Wmissing-variable-declarations]
-uint8_t dataSend = 10;
+main.c(9): warning: no previous extern declaration for non-static variable 'Send' [-Wmissing-variable-declarations]
+uint8_t Send = 0;
         ^
-main.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t dataSend = 10;
+main.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t Send = 0;
 ^
-main.c(125): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+main.c(10): warning: no previous extern declaration for non-static variable 'Get' [-Wmissing-variable-declarations]
+uint8_t Get = 0;
+        ^
+main.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t Get = 0;
+^
+main.c(127): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
   return ((addressSlave << 1) | level);
   ~~~~~~  ~~~~~~~~~~~~~~~~~~~~^~~~~~~
-main.c(220): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                mData = mData << 1;
-                      ~ ~~~~~~^~~~
-main.c(238): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                _data = _data << 1;
-                      ~ ~~~~~~^~~~
-main.c(7): warning: no previous extern declaration for non-static variable 'dataGet' [-Wmissing-variable-declarations]
-char dataGet ;
+main.c(7): warning: no previous extern declaration for non-static variable 'dataSend' [-Wmissing-variable-declarations]
+char dataSend[buffsize];
      ^
 main.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-char dataGet ;
+char dataSend[buffsize];
+^
+main.c(8): warning: no previous extern declaration for non-static variable 'dataGet' [-Wmissing-variable-declarations]
+char dataGet[buffsize] ;
+     ^
+main.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char dataGet[buffsize] ;
 ^
 7 warnings generated.
 compiling main.c...
+Dio.c(1): warning: In file included from...
+../I2C/Dio.h(107): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+1 warning generated.
+compiling Dio.c...
 C:/Users/OS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/StdPeriph_Driver/src/misc.c(131): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
     NVIC->IP[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority;
                                                ~ ^~~~~~~~~~~
@@ -124,7 +130,7 @@ C:/Users/OS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/StdPeriph_Dr
 5 warnings generated.
 compiling stm32f10x_tim.c...
 linking...
-Program Size: Code=2636 RO-data=268 RW-data=4 ZI-data=1652  
+Program Size: Code=2684 RO-data=252 RW-data=0 ZI-data=1680  
 ".\Objects\i2c.axf" - 0 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -158,17 +164,17 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.4.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
-      Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
       Source file:   Device\Source\system_stm32f10x.c
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+      Include file:  RTE_Driver\Config\RTE_Device.h
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
-      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
-      Source file:   Device\StdPeriph_Driver\src\misc.c
-      Include file:  Device\StdPeriph_Driver\inc\misc.h
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
+      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
+      Source file:   Device\StdPeriph_Driver\src\misc.c
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
@@ -185,7 +191,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:TIM:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

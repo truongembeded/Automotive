@@ -153,12 +153,12 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>dataSend,0x0A</ItemText>
+          <ItemText>Send</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>dataGet,0x10</ItemText>
+          <ItemText>Get</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

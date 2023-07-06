@@ -23,9 +23,7 @@ void DelayInit()
 	// Enable clock for TIM2
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 	
-	// TIM2 initialization for overflow every 1ms
-	// Update Event (Hz) = timer_clock / ((TIM_Prescaler + 1) * (TIM_Period + 1))
-	// Update Event (Hz) = 72MHz / ((71 + 1) * (0 + 1)) = 1000000Hz (0.001s)
+
 	TIM_TimeBaseInitStruct.TIM_Prescaler = 72;
 	TIM_TimeBaseInitStruct.TIM_Period = 0xFFFF;
 	TIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;

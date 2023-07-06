@@ -3,9 +3,11 @@
 #include"Dio.h"
 #include"Delay.h"
 
-char dataSend = 'T';
-char dataGet ;
-
+#define buffsize 16
+char dataSend[buffsize];
+char dataGet[buffsize] ;
+uint8_t Send = 0;
+uint8_t Get = 0;
 
 #define I2C_PIN_SDA			DIO_CHANNLE_PB9
 #define I2C_PIN_SCL			DIO_CHANNLE_PB8
@@ -89,22 +91,19 @@ int main(){
 	TIM2_INT_Init();
 	Clock();
 	while(1){
+		if(Send < buffsize){
 				frameAddress(SLAVE_ADDRESS, 0);
-
-        SendData(dataSend);
+        SendData(dataSend[Send++]);
 				DelayMs(100);
-				if(dataSend== 'Z'){ 
-					dataSend = 'A';
+        I2C_Stop();
 		}
-				else dataSend++;
-
-
-        I2C_Stop();
-
+		if(Get < buffsize){
+				SDA_OUT();
         frameAddress(SLAVE_ADDRESS, 1);
-        dataGet = ReadData();
+        dataGet[Get++] = ReadData();
 				DelayMs(100);
         I2C_Stop();
+		}
 	}
 }
 /*
@@ -215,12 +214,11 @@ uint8_t I2C_Get_Nack_Ack(){
 */
 uint8_t SendData(uint8_t mData){
 	for(uint8_t i = 0; i < 8; i++){
-		if( (mData&0x80) != 0x00) {
+		if( mData & (1 << i)) {
 			SDA_HIGH;
 		}else{
 			SDA_LOW;
 		}
-		mData = mData << 1;
 		Clock();
 	}
 	return I2C_Get_Nack_Ack();
@@ -234,12 +232,13 @@ uint8_t SendData(uint8_t mData){
     Return ACK/NACK
 */
 uint8_t ReadData(){
-	uint8_t _data = 0x00;
+	uint8_t received_byte = 0x00;
 	SDA_IN();
 	for(uint8_t i = 0; i < 8; i++){
-	Clock();
-		_data = _data << 1;
-		_data = _data | I2C_PIN_SDA	;
+		Clock();
+		uint8_t bit_value = GPIO_ReadInputDataBit(GPIOB,I2C_PIN_SDA );
+		received_byte |= (bit_value << i);
+		
 	}
 	return I2C_Get_Nack_Ack();
 }
