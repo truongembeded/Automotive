@@ -1,3 +1,9 @@
+/*
+* File: main.h 
+* Author: Nguyen Van Truong
+* Date: 20/10
+* Description: file used to initialize functions
+*/
 #ifndef __MAIN_H
 #define __MAIN_H
 

@@ -1,3 +1,9 @@
+/*
+* File: main.c 
+* Author: Nguyen Van Truong
+* Date: 20/10/2001
+* Description: Perform data transmission and Receivetion with uart method
+*/
 #include "stm32f10x.h"
 #include "Delay.h"
 #include "Dio.h"
@@ -46,7 +52,14 @@ int main(){
 		}
 	}
 }
-
+/*
+* Function: config
+* Description: Initialize the pins with the corresponding output functions
+* Input:
+*   None
+* Output:
+*   Configure pins
+*/
 void config() {
 	GPIO_InitTypeDef gpio;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOC, ENABLE);
@@ -66,12 +79,26 @@ void config() {
 	gpio.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOC, &gpio);
 }
-
+/*
+* Function: Uart_init
+* Description: Initialize the pins Tx and Rx is STD_HIGH
+* Input:
+*   None
+* Output:
+*   None
+*/
 void Uart_init(){
 	Dio_WriteChannel(Tx, STD_HIGH);
 	Dio_WriteChannel(Rx, STD_HIGH);
 }
-
+/*
+* Function: Uart_transmit
+* Description: the function used to transmit by uart method
+* Input:
+*   uint8_t mData : data to be transmited
+* Output:
+*   None
+*/
 void Uart_transmit(uint8_t mData){
 	Dio_WriteChannel(Tx, STD_LOW);
 	DelayMs(1000);
@@ -90,7 +117,14 @@ void Uart_transmit(uint8_t mData){
 	
 	Delay();
 }
-
+/*
+* Function: Uart_recieve
+* Description: the function used to recieved by uart method
+* Input:
+*   None
+* Output:
+*   received_byte : data to be received
+*/
 uint8_t Uart_recieve(){
 	// wait to until when bit start
   while (!GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_10)) {}  // GPIOA Pin 10 (RX) là muc cao

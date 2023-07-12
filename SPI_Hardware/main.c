@@ -2,8 +2,7 @@
 * File: main.c 
 * Author: Nguyen Van truong
 * Date: 20/10
-* Description:  This is file create to transmit and receiver data of 
-*	the spi hardware 
+* Description:  This is file create to transmit and receiver data of the spi hardware 
 */
 #include "stm32f10x.h"
 #include "Delay.h"

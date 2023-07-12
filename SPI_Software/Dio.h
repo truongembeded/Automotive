@@ -1,7 +1,16 @@
-#include "stm32f10x.h"
+/*
+* File: Dio.h 
+* Author: Nguyen Van Truong
+* Date: 20/10
+* Description: This is the file used to declare functions written according to the autosar standard
+*/
 
 #ifndef __DIO_H
 #define __DIO_H
+
+#include "stm32f10x.h"
+
+/* Declare an enum consisting of pin numbers */
 typedef enum{
 	DIO_CHANNLE_PA0,
 	DIO_CHANNLE_PA1,
@@ -42,6 +51,7 @@ typedef enum{
 	
 }Dio_ChannelType;
 
+/* Declare an enum consisting of ports */
 typedef enum 
 {
 	DIO_A,
@@ -50,6 +60,7 @@ typedef enum
 	
 }Dio_PortType;
 
+/* Declare an enum consisting of value status */
 typedef enum{
 	STD_LOW,
 	STD_HIGH

@@ -26,9 +26,9 @@ int main(void){
 	ConfigOut();
 	
 	while(1){
-		Dio_WriteChannle(DIO_CHANNLE_PC13, STD_LOW);
+		Dio_WriteChannel(DIO_CHANNLE_PC13, STD_LOW);
 		Delay(1000);
-		Dio_WriteChannle(DIO_CHANNLE_PC13, STD_HIGH);
+		Dio_WriteChannel(DIO_CHANNLE_PC13, STD_HIGH);
 		Delay(1000);
 	}
 	

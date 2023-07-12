@@ -1,3 +1,9 @@
+/*
+* File: Delay.c 
+* Author: Nguyen Van Truong
+* Date: 20/10/2001
+* Description: this file create timer interrups
+*/
 #include "delay.h"
 
 //function will be called every 1 us

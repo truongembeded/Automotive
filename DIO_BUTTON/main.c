@@ -1,5 +1,12 @@
+/*
+* File: main.c 
+* Author: Nguyen Van Truong
+* Date: 20/10/2001
+* Description: file is used to initialize the functions to blink the led with the button press
+*/
 #include "stm32f10x.h"
 #include "Dio.h"
+#include "main.h"
 
 void ConfigOut(void){
 	GPIO_InitTypeDef gpio;
@@ -46,7 +53,7 @@ void butTon2() {
 }
 
 void butTon3() {
-  if (Dio_ReadChannel(DIO_CHANNLE_PA2) == STD_HIGH) Stop();
+  if (Dio_ReadChannel(DIO_CHANNLE_PA2) == STD_HIGH) Stoped();
 }
 
 
@@ -64,7 +71,7 @@ void Blink(uint8_t count)
 				Dio_WriteChannel(DIO_CHANNLE_PB7, STD_LOW);
 				delay(10000);
     }
-				Stop();
+				Stoped();
 }
 
 void ChaseLed(uint8_t count)
@@ -81,14 +88,14 @@ void ChaseLed(uint8_t count)
 		Dio_WriteChannel(DIO_CHANNLE_PB7, STD_LOW);
 
     }
-	  Stop();
+	  Stoped();
 
 	}
 
 
 
 
-void Stop()
+void Stoped()
 {
 		Dio_WriteChannel(DIO_CHANNLE_PB5, STD_LOW);
 		Dio_WriteChannel(DIO_CHANNLE_PB6, STD_LOW);

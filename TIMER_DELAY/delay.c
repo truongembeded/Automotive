@@ -1,3 +1,9 @@
+/*
+* File: Delay.c 
+* Author: Nguyen Van Truong
+* Date: 20/10/2001
+* Description: this file create timer delay
+*/
 #include "delay.h"
 
 void Delayms(void)

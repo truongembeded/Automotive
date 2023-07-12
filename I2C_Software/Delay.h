@@ -4,8 +4,8 @@
 * Date: 20/10
 * Description: This is the file used to delay the timer interups
 */
-#ifndef __DELAY__H
-#define __DELAY__H
+#ifndef __DELAY_H
+#define __DELAY_H
 
 
 #include "stm32f10x.h"
@@ -15,6 +15,7 @@ void TIM2_IRQHandler(void);
 void TIM2_INT_Init(void);
 void DelayUs(uint32_t us);
 void DelayMs(uint32_t ms);
+uint32_t mircos(void);
 
 
 #endif

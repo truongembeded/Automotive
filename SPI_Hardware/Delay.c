@@ -1,3 +1,9 @@
+/*
+* File: Delay.c 
+* Author: Nguyen Van truong
+* Date: 20/10
+* Description:  This is file create delay 
+*/
 #include "delay.h"
 
 // For store tick counts in us

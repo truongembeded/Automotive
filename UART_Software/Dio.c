@@ -1,5 +1,21 @@
+/*
+* File: Dio.c 
+* Author: Nguyen Van Truong
+* Date: 20/10
+* Description: Declare functions written according to the autosar standard(dio)
+*/
 #include "Dio.h"
 #include"stm32f10x.h"
+
+/*
+* Function: Dio_WriteChannel
+* Description: Service to set a level of a channel
+* Input:
+*   ChannelId: ID of DIO channel
+*   Level: Value return high or low
+* Output:
+*   None
+*/
 void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_levelType Level){
 		GPIO_TypeDef * gpioPort;
 		uint16_t gpioPin;
@@ -154,7 +170,16 @@ void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_levelType Level){
 			GPIO_SetBits(gpioPort, gpioPin);
 		}
 }
-
+/*
+* Function: Dio_ReadChannel
+* Description: Returns the value of the specified DIO channel.
+* Input:
+*   ChannelId: ID of DIO channel
+* Output:
+*   Dio_LevelType: 
+*     STD_HIGH The physical level of Pin is STD_HIGH
+*     STD_LOW The physical level of Pin is STD_LOW
+*/
 Dio_levelType Dio_ReadChannel(Dio_ChannelType Channe1Id){
 		GPIO_TypeDef * gpioPort;
 		uint16_t gpioPin;
@@ -308,7 +333,14 @@ Dio_levelType Dio_ReadChannel(Dio_ChannelType Channe1Id){
 		}
 
 }
-
+/*
+* Function: Dio_ReadPort
+* Description: Returns the level of all channels of that port
+* Input:
+		PortId : ID of DIO Port
+* Output:
+*   Dio_PortLevelType : Level of all channels of that port
+*/
 uint16_t Dio_ReadPort( Dio_PortType PortId ){
 		uint16_t data;
 	switch(PortId)
@@ -318,11 +350,11 @@ uint16_t Dio_ReadPort( Dio_PortType PortId ){
             break;
 			
 			case DIO_B :
-						data = GPIO_ReadInputData(GPIOA);
+						data = GPIO_ReadInputData(GPIOB);
             break;
 						
 			case DIO_C :
-						data = GPIO_ReadInputData(GPIOA);
+						data = GPIO_ReadInputData(GPIOC);
             break;
 			
 		}
@@ -330,7 +362,14 @@ uint16_t Dio_ReadPort( Dio_PortType PortId ){
 		return data ;
 }
 
-
+/*
+* Function: Dio_WritePort
+* Description: Service to set a value of the port.
+* Input:
+*   PortId : ID of DIO Port
+		Level  : Value to be written
+* Output: none
+*/
 void Dio_WritePort(Dio_PortType PortId, uint8_t Level)
 {
     switch (PortId)
@@ -349,7 +388,17 @@ void Dio_WritePort(Dio_PortType PortId, uint8_t Level)
 
     }
 }
-
+/*
+* Function: Dio_FlipChannel
+* Description: Service to flip (change from 1 to 0 or from 0 to 1) the level of a channel and return 
+the level of the channel after flip.
+* Input:
+*   ChannelId: ID of DIO channel
+* Output:
+*   Dio_LevelType: 
+*     STD_HIGH The physical level of the corresponding Pin is STD_HIGH
+*     STD_LOW The physical level of the corresponding Pin is STD_LOW
+*/
 Dio_levelType Dio_FlipChannel (Dio_ChannelType Channe1Id){
 		GPIO_TypeDef * gpioPort;
 		uint16_t gpioPin;

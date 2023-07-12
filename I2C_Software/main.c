@@ -1,3 +1,9 @@
+/*
+* File: main.c 
+* Author: Nguyen Van Truong
+* Date: 20/10/2001
+* Description: this file that writes functions I2C communication programs
+*/
 #include"stm32f10x.h"
 #include "stm32f10x_i2c.h"
 #include"Dio.h"

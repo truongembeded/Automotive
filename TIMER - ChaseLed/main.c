@@ -1,3 +1,9 @@
+/*
+* File: main.c 
+* Author: Nguyen Van Truong
+* Date: 20/10/2001
+* Description: this file create timer interrups to chased led arcoding to asked
+*/
 #include"stm32f10x.h"
 #include"main.h"
 

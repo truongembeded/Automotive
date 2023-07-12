@@ -1,19 +1,29 @@
 /*
-* File: delay.c
+* File: Delay.c 
 * Author: Nguyen Van Truong
-* Date: 20/10
-* Description: this file create timer interrups
+* Date: 20/10/2001
+* Description: this file create timer interrups to write i2c
 */
 #include "Delay.h"
+uint32_t Count = 0;
 
-//function will be called every 1 us
-void TIM2_IRQHandler(void)
+uint32_t mircos()
 {
+	
+	
+return Count;
+}
+
+void TIM2_IRQHandler(){
+		if(TIM_GetITStatus(TIM2, TIM_IT_Update)){
 	if (CountUs != 0)
 	{
 		CountUs--;
 	}
-	TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+				Count++;
+			TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+		
+		}
 }
 
 void TIM2_INT_Init()
@@ -25,8 +35,8 @@ void TIM2_INT_Init()
 	// Enable clock for TIM2
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 	
-
-	TIM_TimeBaseInitStruct.TIM_Prescaler = 72;
+	
+	TIM_TimeBaseInitStruct.TIM_Prescaler = 36;
 	TIM_TimeBaseInitStruct.TIM_Period = 1;
 	TIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
@@ -44,7 +54,6 @@ void TIM2_INT_Init()
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStruct);
 }
-
 void DelayUs(uint32_t us)
 {
 	// Reload us value
@@ -62,3 +71,4 @@ void DelayMs(uint32_t ms)
 		DelayUs(1000);
 	}
 }
+

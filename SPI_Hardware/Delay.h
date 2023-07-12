@@ -1,3 +1,8 @@
+/*
+* File: Delay.h
+* Author: Nguyen Van truong
+* Date: 20/10
+*/
 #ifndef __DELAY_H
 #define __DELAY_H
 
