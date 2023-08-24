@@ -1,10 +1,10 @@
-#include"delay.h"
 /*
 * File: main.c 
 * Author: Nguyen Van Truong
 * Date: 20/10/2001
 * Description: this file create timer delay to blink led arcoding to asked
 */
+#include"delay.h"
 int main(){
 		DelayInit();
 	

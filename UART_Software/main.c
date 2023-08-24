@@ -1,7 +1,7 @@
 /*
 * File: main.c 
 * Author: Nguyen Van Truong
-* Date: 20/10/2001
+* Date: 20/10
 * Description: Perform data transmission and Receivetion with uart method
 */
 #include "stm32f10x.h"

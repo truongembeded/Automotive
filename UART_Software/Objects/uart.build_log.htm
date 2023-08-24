@@ -21,14 +21,14 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
 Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
-C:\Users\OS\OneDrive - Industrial University of HoChiMinh City\Desktop\Embedded in Automotive\UART_Software\uart.uvprojx
+C:\Users\OS\OneDrive - Industrial University of HoChiMinh City\Desktop\Embedded in Automotive\Uart_Software\uart.uvprojx
 Project File Date:  07/01/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.14', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-Delay.c(1): warning: In file included from...
-./Delay.h(5): warning: In file included from...
+Delay.c(7): warning: In file included from...
+./Delay.h(11): warning: In file included from...
 C:/Users/OS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(8347): warning: In file included from...
 ./RTE/Device/STM32F103C8\stm32f10x_conf.h(87): warning: In file included from...
 C:/Users/OS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/StdPeriph_Driver/inc\stm32f10x_tim.h(50): warning: padding size of 'TIM_TimeBaseInitTypeDef' with 1 byte to alignment boundary [-Wpadded]
@@ -36,38 +36,38 @@ typedef struct
         ^
 1 warning generated.
 compiling Delay.c...
-main.c(3): warning: In file included from...
-./Dio.h(107): warning: no newline at end of file [-Wnewline-eof]
+main.c(9): warning: In file included from...
+./Dio.h(118): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-main.c(10): warning: no previous extern declaration for non-static variable 'TxIdx' [-Wmissing-variable-declarations]
+main.c(16): warning: no previous extern declaration for non-static variable 'TxIdx' [-Wmissing-variable-declarations]
 uint8_t TxIdx = 0;
         ^
-main.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t TxIdx = 0;
 ^
-main.c(11): warning: no previous extern declaration for non-static variable 'RxIdx' [-Wmissing-variable-declarations]
+main.c(17): warning: no previous extern declaration for non-static variable 'RxIdx' [-Wmissing-variable-declarations]
 uint8_t RxIdx = 0;
         ^
-main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t RxIdx = 0;
 ^
-main.c(8): warning: no previous extern declaration for non-static variable 'data' [-Wmissing-variable-declarations]
+main.c(14): warning: no previous extern declaration for non-static variable 'data' [-Wmissing-variable-declarations]
 char data[size];
      ^
-main.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 char data[size];
 ^
-main.c(9): warning: no previous extern declaration for non-static variable 'Uart_received' [-Wmissing-variable-declarations]
+main.c(15): warning: no previous extern declaration for non-static variable 'Uart_received' [-Wmissing-variable-declarations]
 char Uart_received[size];
      ^
-main.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 char Uart_received[size];
 ^
 5 warnings generated.
 compiling main.c...
-Dio.c(1): warning: In file included from...
-./Dio.h(107): warning: no newline at end of file [-Wnewline-eof]
+Dio.c(7): warning: In file included from...
+./Dio.h(118): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
 1 warning generated.
@@ -116,7 +116,7 @@ __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9}
 1 warning generated.
 compiling system_stm32f10x.c...
 linking...
-Program Size: Code=2332 RO-data=268 RW-data=4 ZI-data=1660  
+Program Size: Code=2324 RO-data=268 RW-data=4 ZI-data=1660  
 ".\Objects\uart.axf" - 0 Error(s), 16 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -150,25 +150,25 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.4.0
 
    * Component: Keil::Device:Startup:1.0.0
+      Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\system_stm32f10x.c
       Source file:   Device\Source\ARM\startup_stm32f10x_md.s
-      Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
-      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
-      Include file:  Device\StdPeriph_Driver\inc\misc.h
-      Source file:   Device\StdPeriph_Driver\src\misc.c
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
+      Source file:   Device\StdPeriph_Driver\src\misc.c
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
+      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
 
    * Component: Keil::Device:StdPeriph Drivers:TIM:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
@@ -177,7 +177,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:USART:3.6.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
